@@ -59,8 +59,10 @@ export default {
       phone: "",
       wish: "",
       attend: "",
+      // url:
+      //   "https://api-wedding-rindu-pandu.herokuapp.com/api/wedding/post-data",
       url:
-        "https://api-wedding-rindu-pandu.herokuapp.com/api/wedding/post-data",
+        "https://zu8bjg7t2f.execute-api.us-east-1.amazonaws.com/dev/api/wedding/users",
     };
   },
   methods: {

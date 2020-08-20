@@ -48,7 +48,9 @@ export default {
       slide: 0,
       sliding: null,
       images: [],
-      url: "https://api-wedding-rindu-pandu.herokuapp.com/api/wedding/get-data",
+      // url: "https://api-wedding-rindu-pandu.herokuapp.com/api/wedding/get-data",
+      url:
+        "https://zu8bjg7t2f.execute-api.us-east-1.amazonaws.com/dev/api/wedding/users",
     };
   },
   created() {

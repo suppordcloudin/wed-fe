@@ -30,6 +30,7 @@ phases:
       - echo Testing...
       - echo "PATH"
       - pwd
+      - ls
       # build
       - echo Building...
       # - npm run build

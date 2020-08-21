@@ -16,7 +16,8 @@ phases:
       - pip install awscli
       - echo "Check AWSCLI version"
       - aws --version
-      # RUN npm install
+      # RUN npm install vue-cli
+      - npm install-g @vue/cli
       # RUN npm run build
   # pre-build:
   #   commands:

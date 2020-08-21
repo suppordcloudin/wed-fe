@@ -32,6 +32,6 @@ export default {
     Content6,
     Content7,
     Footer,
-  },
+  }
 };
 </script>

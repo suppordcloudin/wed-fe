@@ -6,7 +6,7 @@
           <b-button
             variant="secondary"
             size="sm"
-            @click="info(row.index)"
+            @click="showAllList()"
             class="mr-1"
           >
             List Semua Kehadiran
@@ -14,7 +14,7 @@
           <b-button
             variant="secondary"
             size="sm"
-            @click="info(row.index)"
+            @click="showAttend()"
             class="mr-1"
           >
             List Datang
@@ -22,7 +22,7 @@
           <b-button
             variant="secondary"
             size="sm"
-            @click="info(row.index)"
+            @click="showNotAttend()"
             class="mr-1"
           >
             List Tidak Datang
@@ -72,7 +72,7 @@
 export default {
   data() {
     return {
-      // Note 'isActive' is left out and will not appear in the rendered table
+      auth: false,
       fields: [
         {
           key: "index",
@@ -103,6 +103,11 @@ export default {
   },
   created() {
     this.backup = this.items;
+    this.auth = localStorage.getItem('auth');
+    
+    if(this.auth != 'masuk'){
+      this.$router.push({name: "Login"})
+    }
   },
   methods: {
     remove(index) {
@@ -111,9 +116,25 @@ export default {
     showWish(index) {
       alert(this.items[index].wish);
     },
-    showAllList() {},
-    showAttend() {},
-    showNotAttend() {},
+    showAllList() {
+      this.items = this.backup;
+    },
+    showAttend() {
+      this.items = []
+      this.backup.forEach((col)=>{
+        if(col.attend=='Yes'){
+          this.items.push(col)
+        }
+      })
+    },
+    showNotAttend() {
+      this.items = []
+      this.backup.forEach((col)=>{
+        if(col.attend=='No'){
+          this.items.push(col)
+        }
+      })
+    },
   },
 };
 </script>

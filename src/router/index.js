@@ -6,14 +6,16 @@ import Attendance from '../views/Attendance.vue'
 Vue.use(VueRouter)
 
 const routes = [{
-  path: '/',
-  name: 'Home',
-  component: Home,
-
-  path: '/attendance',
-  name: 'Attendance',
-  component: Attendance
-}]
+    path: '/',
+    name: 'Home',
+    component: Home,
+  },
+  {
+    path: '/attendance',
+    name: 'Attendance',
+    component: Attendance
+  }
+]
 
 const router = new VueRouter({
   mode: 'history',

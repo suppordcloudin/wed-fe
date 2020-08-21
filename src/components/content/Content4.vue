@@ -51,10 +51,10 @@
             data-aos-duration="500"
           >
             <b-row>
-              <b-col cols="3">
+              <b-col cols="12" md="3">
                 <b-icon class="op" icon="clock" font-scale="3"></b-icon>
               </b-col>
-              <b-col cols="9">
+              <b-col cols="12" md="9">
                 <b-row>
                   <b-col cols="12 bold">Time</b-col>
                   <b-col cols="12">16:00 - 19:00 WIB</b-col>
@@ -64,12 +64,31 @@
           </div>
         </b-col>
         <b-col cols="12 text-center">
-          <b-row>
-            <b-col cols="12 bold">
-              {{ day }}d : {{ hour }}h : {{ minute }}m : {{ second }}s
-            </b-col>
-            <b-col cols="12">to go <b-icon icon="star"></b-icon></b-col>
-          </b-row>
+          <div
+            data-aos="zoom-out-down"
+            data-aos-delay="100"
+            data-aos-duration="500"
+          >
+            <h1>
+              Cou<label style="border-bottom: 2px solid red;">ntd</label>own
+            </h1>
+          </div>
+        </b-col>
+        <b-col cols="12 text-center" id="time">
+          <div
+            data-aos="zoom-out-down"
+            data-aos-delay="100"
+            data-aos-duration="500"
+          >
+            <b-row>
+              <b-col cols="12 bold">
+                <div class="countdown">
+                  {{ day }}d : {{ hour }}h : {{ minute }}m : {{ second }}s
+                </div>
+              </b-col>
+              <b-col cols="12">to go <b-icon icon="star"></b-icon></b-col>
+            </b-row>
+          </div>
         </b-col>
       </b-row>
     </b-container>
@@ -94,8 +113,7 @@ export default {
   },
   methods: {
     setTime() {
-      var countDownDate = new Date("Aug 9, 2020 15:37:25").getTime();
-
+      var countDownDate = new Date("Sep 03, 2020 16:00:00").getTime();
       var now = new Date().getTime();
       var distance = countDownDate - now;
       this.day = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -105,8 +123,7 @@ export default {
       this.minute = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       this.second = Math.floor((distance % (1000 * 60)) / 1000);
       if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("demo").innerHTML = "EXPIRED";
+        document.getElementById("time").innerHTML = "The party has started";
       }
     },
   },
@@ -126,5 +143,11 @@ export default {
 }
 .bold {
   font-weight: bold;
+}
+.countdown {
+  background-color: #eec0c6;
+  margin: 0 20%;
+  background-image: linear-gradient(315deg, #eec0c6 0%, #e58c8a 74%);
+  border-radius: 5px;
 }
 </style>

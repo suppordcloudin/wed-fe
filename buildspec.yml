@@ -18,10 +18,10 @@ phases:
       - aws --version
       # RUN npm install
       # RUN npm run build
-  pre-build:
-    commands:
-      # install depedencies
-      # - npm install .
+  # pre-build:
+  #   commands:
+  #     # install depedencies
+  #     # - npm install .
   build:
     commands:
       # Test

@@ -7,7 +7,7 @@ phases:
       - echo "Installing Nodejs LTR"
       - curl -sL https://deb.nodesource.com/setup_12.x | bash -
       - apt install -y nodejs
-      # Install AWSCLI
+      # Install AWSCLI latest
       - echo "Check Python version"
       - python -V
       - echo "Check PIP Version"

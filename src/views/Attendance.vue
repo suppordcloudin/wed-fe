@@ -47,7 +47,7 @@
               <b-button
                 variant="danger"
                 size="sm"
-                @click="remove(row.index)"
+                @click="delConf()"
                 class="mr-1"
               >
                 Delete
@@ -103,10 +103,10 @@ export default {
   },
   created() {
     this.backup = this.items;
-    this.auth = localStorage.getItem('auth');
-    
-    if(this.auth != 'masuk'){
-      this.$router.push({name: "Login"})
+    this.auth = localStorage.getItem("auth");
+
+    if (this.auth != "login") {
+      this.$router.push({ name: "Login" });
     }
   },
   methods: {
@@ -114,26 +114,52 @@ export default {
       alert(this.items[index].name);
     },
     showWish(index) {
-      alert(this.items[index].wish);
+      this.show(this.items[index].wish);
     },
     showAllList() {
       this.items = this.backup;
     },
     showAttend() {
-      this.items = []
-      this.backup.forEach((col)=>{
-        if(col.attend=='Yes'){
-          this.items.push(col)
+      this.items = [];
+      this.backup.forEach((col) => {
+        if (col.attend == "Yes") {
+          this.items.push(col);
         }
-      })
+      });
     },
     showNotAttend() {
-      this.items = []
-      this.backup.forEach((col)=>{
-        if(col.attend=='No'){
-          this.items.push(col)
+      this.items = [];
+      this.backup.forEach((col) => {
+        if (col.attend == "No") {
+          this.items.push(col);
         }
-      })
+      });
+    },
+    show(val) {
+      this.$swal({
+        text: val,
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Back",
+      });
+    },
+    delConf() {
+      this.conf();
+    },
+    conf() {
+      this.$swal({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yuhu",
+      }).then((result) => {
+        if (result.value == true) {
+          console.log("file berhasil dihapus!");
+          location.reload();
+        }
+      });
     },
   },
 };

@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="light">
-      <b-container v-if="route=='Home'">
+      <b-container v-if="route == 'Home'">
         <b-navbar-brand href="#"></b-navbar-brand>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
@@ -23,6 +23,9 @@
           <b-navbar-nav class="ml-auto">
             <!-- Using 'button-content' slot -->
             <b-nav-item href="/">Home</b-nav-item>
+            <b-nav-item v-if="auth == 'login'" @click="logout()"
+              >Logout</b-nav-item
+            >
           </b-navbar-nav>
         </b-collapse>
       </b-container>
@@ -33,14 +36,21 @@
 export default {
   data() {
     return {
-      route: ''
+      route: "",
+      auth: "",
     };
   },
   methods: {
+    logout() {
+      localStorage.setItem("auth", "");
+      this.$router.push({ name: "Login" });
+      location.reload();
+    },
   },
-  mounted(){
-    this.route = this.$route.name
-  }
+  mounted() {
+    this.auth = localStorage.getItem("auth");
+    this.route = this.$route.name;
+  },
 };
 </script>
 

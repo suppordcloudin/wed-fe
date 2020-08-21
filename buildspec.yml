@@ -17,7 +17,7 @@ phases:
       - echo "Check AWSCLI version"
       - aws --version
       # RUN npm install vue-cli
-      - npm install-g @vue/cli
+      - npm install -g @vue/cli
       # RUN npm run build
   # pre-build:
   #   commands:

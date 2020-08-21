@@ -1,0 +1,36 @@
+version:  0.2
+
+phases:
+  install:
+    commands:
+      # Install Node latest
+      - echo "Installing Nodejs LTR"
+      - curl -sL https://deb.nodesource.com/setup_12.x | bash -
+      - apt install -y nodejs
+      # Install AWSCLI
+      - echo "Check Python version"
+      - python -V
+      - echo "Check PIP Version"
+      - pip -V
+      - echo "Install and Upgrade AWSCLI"
+      - pip install awscli
+      - echo "Check AWSCLI version"
+      - aws --version
+      # RUN npm install
+      # RUN npm run build
+  pre-build:
+    commands:
+      # install depedencies
+      - npm install
+  build:
+    commands:
+      # Test
+      - echo Testing...
+      # build
+      - echo Building...
+      - npm run build
+artifacts:
+  files:
+    - "**/*"
+  discard-paths: no
+  base-directory: dist

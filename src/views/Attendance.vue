@@ -98,7 +98,11 @@ export default {
         { phone: 89, name: "Geneva", wish: "dsadsadsa", attend: "No" },
         { phone: 38, name: "Jami", wish: "dsadsadsa", attend: "Yes" },
       ],
+      backup: [],
     };
+  },
+  created() {
+    this.backup = this.items;
   },
   methods: {
     remove(index) {
@@ -107,6 +111,9 @@ export default {
     showWish(index) {
       alert(this.items[index].wish);
     },
+    showAllList() {},
+    showAttend() {},
+    showNotAttend() {},
   },
 };
 </script>

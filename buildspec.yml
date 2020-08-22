@@ -13,7 +13,8 @@ phases:
       - echo "Check PIP Version"
       - pip -V
       - echo "Install and Upgrade AWSCLI"
-      - pip install awscli
+      - pip install --upgrade pip
+      - pip install --upgrade awscli
       - echo "Check AWSCLI version"
       - aws --version
       # RUN npm install vue-cli
@@ -27,11 +28,14 @@ phases:
     commands:
       # Test
       - echo Testing...
+      - echo "PATH"
+      - pwd
+      - ls
       # build
       - echo Building...
-      - npm run build
-artifacts:
-  files:
-    - "**/*"
-  discard-paths: no
-  base-directory: dist
+      # - npm run build
+# artifacts:
+#   files:
+#     - "**/*"
+#   discard-paths: no
+#   base-directory: dist

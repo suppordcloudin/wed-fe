@@ -36,6 +36,7 @@ export default {
     return {
       uname: "",
       pass: "",
+      auth: "",
     };
   },
   methods: {
@@ -59,6 +60,12 @@ export default {
         confirmButtonText: ":(",
       }).then((result) => {});
     },
+  },
+  created() {
+    this.auth = localStorage.getItem("auth");
+    if (this.auth == "login") {
+      this.$router.push({ name: "Attendance" });
+    }
   },
 };
 </script>

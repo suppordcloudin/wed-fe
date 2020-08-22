@@ -40,10 +40,12 @@
             </b-form-group>
           </b-col>
           <b-col cols="12">
-            <b-button variant="secondary" @click="postData()"
-              >Submit</b-button
-            ></b-col
-          >
+            <b-button variant="secondary" @click="postData()">
+              <span v-if="loaderSubmit == false">Submit</span>
+              <span v-else
+                ><b-spinner label="Spinning"></b-spinner
+              ></span> </b-button
+          ></b-col>
         </b-row>
       </b-container>
     </div>
@@ -59,6 +61,7 @@ export default {
       phone: "",
       wish: "",
       attend: "",
+      loaderSubmit: false,
       // url:
       //   "https://api-wedding-rindu-pandu.herokuapp.com/api/wedding/post-data",
       url:
@@ -79,6 +82,7 @@ export default {
       }
     },
     sendData() {
+      this.loaderSubmit = true;
       var data = {
         name: this.name,
         phone: this.phone,
@@ -89,6 +93,7 @@ export default {
         axios
           .post(this.url, data)
           .then((res) => {
+            this.loaderSubmit = false;
             this.sukses();
             setInterval(function () {
               location.reload();
@@ -96,6 +101,7 @@ export default {
           })
           .catch((e) => {
             reject(e);
+            this.gagalPost();
           });
       });
     },
@@ -118,6 +124,16 @@ export default {
         confirmButtonColor: "red",
         confirmButtonText: ":(",
       }).then((result) => {});
+    },
+    gagalPost() {
+      this.$swal({
+        icon: "error",
+        title: "Gagal mengirim",
+        confirmButtonColor: "red",
+        confirmButtonText: ":(",
+      }).then((result) => {
+        location.reload();
+      });
     },
   },
 };

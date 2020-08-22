@@ -66,6 +66,7 @@ export default {
           })
           .catch((e) => {
             reject(e);
+            location.reload();
           });
       });
     },

@@ -47,7 +47,7 @@
               <b-button
                 variant="danger"
                 size="sm"
-                @click="delConf()"
+                @click="delConf(row.index)"
                 class="mr-1"
               >
                 Delete
@@ -69,6 +69,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -80,7 +81,7 @@ export default {
         },
         {
           key: "name",
-          sortable: true,
+          sortable: false,
         },
         {
           key: "phone",
@@ -89,20 +90,18 @@ export default {
         {
           key: "attend",
           label: "Kehadiran",
-          sortable: true,
+          sortable: false,
         },
         { key: "actions", label: "Actions" },
       ],
-      items: [
-        { phone: 21, name: "Larsen", wish: "dsadsadsa", attend: "Yes" },
-        { phone: 89, name: "Geneva", wish: "dsadsadsa", attend: "No" },
-        { phone: 38, name: "Jami", wish: "dsadsadsa", attend: "Yes" },
-      ],
+      items: [],
       backup: [],
+      url:
+        "https://zu8bjg7t2f.execute-api.us-east-1.amazonaws.com/dev/api/wedding/users",
     };
   },
   created() {
-    this.backup = this.items;
+    this.getData();
     this.auth = localStorage.getItem("auth");
 
     if (this.auth != "login") {
@@ -110,6 +109,33 @@ export default {
     }
   },
   methods: {
+    getData() {
+      return new Promise((resolve, reject) => {
+        axios
+          .get(this.url)
+          .then((response) => {
+            console.log(response.data);
+            this.items = response.data;
+            this.backup = this.items;
+          })
+          .catch((e) => {
+            reject(e);
+            location.reload();
+          });
+      });
+    },
+    removeData(idnya) {
+      return new Promise((resolve, reject) => {
+        axios
+          .delete(this.url + "/" + idnya)
+          .then((response) => {
+            this.hapusSukses();
+          })
+          .catch((e) => {
+            reject(e);
+          });
+      });
+    },
     remove(index) {
       alert(this.items[index].name);
     },
@@ -142,10 +168,17 @@ export default {
         confirmButtonText: "Back",
       });
     },
-    delConf() {
-      this.conf();
+    hapusSukses() {
+      this.$swal({
+        icon: "success",
+        title: "Berhasil menghapus data",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "unch",
+      }).then((result) => {
+        location.reload();
+      });
     },
-    conf() {
+    delConf(index) {
       this.$swal({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -156,8 +189,7 @@ export default {
         confirmButtonText: "Yuhu",
       }).then((result) => {
         if (result.value == true) {
-          console.log("file berhasil dihapus!");
-          location.reload();
+          this.removeData(this.items[index]._id);
         }
       });
     },

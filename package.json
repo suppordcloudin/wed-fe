@@ -6,7 +6,8 @@
     "serve": "rm -rf dist && vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "node server.js"
+    "start": "node server.js",
+    "yes": "vue-cli-service serve"
   },
   "dependencies": {
     "aos": "^2.3.4",

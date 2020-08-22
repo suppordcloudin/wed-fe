@@ -51,13 +51,13 @@
             data-aos-duration="500"
           >
             <b-row>
-              <b-col cols="12" md="3">
+              <b-col cols="3">
                 <b-icon class="op" icon="clock" font-scale="3"></b-icon>
               </b-col>
-              <b-col cols="12" md="9">
+              <b-col cols="9">
                 <b-row>
                   <b-col cols="12 bold">Time</b-col>
-                  <b-col cols="12">16:00 - 19:00 WIB</b-col>
+                  <b-col cols="12">18:00 - 20:00 WIB</b-col>
                 </b-row>
               </b-col>
             </b-row>

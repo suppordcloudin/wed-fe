@@ -7,9 +7,9 @@
             <a
               style="color: black;"
               target="#blank"
-              href="https://instagram.com/ibtris"
+              href="https://www.instagram.com/cloudinaja/"
             >
-              Copyrights &copy; 2020, ibtris</a
+              Copyrights &copy; 2020, cloudinaja</a
             ></small
           >
         </b-col>

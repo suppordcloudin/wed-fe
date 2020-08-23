@@ -39,8 +39,8 @@ export default {
   data() {
     return {
       option: [
-        "We're getting married.",
-        "Thursday the 3rd of September, 2020",
+        "We were married on 10th April 2020",
+        "You are invited to attend our wedding party at 3rd September 2020",
         "Tjendana Bistro Bandung",
       ],
     };
